@@ -20,15 +20,7 @@ class StoreListAdapter() :
     }
 }
 
-class StoreDiffCallback : DiffUtil.ItemCallback<Store>() {
-    override fun areItemsTheSame(oldItem: Store, newItem: Store): Boolean {
-        return oldItem.storeID == newItem.storeID
-    }
 
-    override fun areContentsTheSame(oldItem: Store, newItem: Store): Boolean {
-        return oldItem == newItem
-    }
-}
 
 class AsteroidViewHolder(private val binding: StoreItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -43,5 +35,14 @@ class AsteroidViewHolder(private val binding: StoreItemBinding) :
             val binding = StoreItemBinding.inflate(layoutInflater, parent, false)
             return AsteroidViewHolder(binding)
         }
+    }
+}
+class StoreDiffCallback : DiffUtil.ItemCallback<Store>() {
+    override fun areItemsTheSame(oldItem: Store, newItem: Store): Boolean {
+        return oldItem.storeID == newItem.storeID
+    }
+
+    override fun areContentsTheSame(oldItem: Store, newItem: Store): Boolean {
+        return oldItem == newItem
     }
 }

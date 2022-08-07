@@ -7,9 +7,10 @@ import androidx.activity.viewModels
 import com.example.demo.databinding.ActivityMainBinding
 
 private const val TAG = "MainActivity"
+
 class MainActivity : AppCompatActivity() {
-    private val viewModel : MainViewModel by viewModels()
-    private lateinit var binding : ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,12 +19,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        val adapter = StoreListAdapter()
-        binding.asteroidRecycler.adapter = adapter
+        binding.asteroidRecycler.adapter = StoreListAdapter()
 
         viewModel.stores.observe(this) {
             Log.i(TAG, "onCreate: $it")
-            adapter.submitList(it)
+            StoreListAdapter().submitList(it)
         }
     }
 }
